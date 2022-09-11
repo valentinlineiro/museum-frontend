@@ -1,0 +1,34 @@
+[
+  {
+    "id": "c8b29901-ceb9-47b2-af74-7a6d227a8e5a",
+    "title": "Clase en blanco",
+    "description": "Clase de constantes en blanco",
+    "authors": [
+      {
+        "name": "Pescanova"
+      },
+      {
+        "name": "Cutre"
+      },
+      {
+        "name": "Cretino"
+      },
+      {
+        "name": "Chino"
+      }
+    ]
+  },
+  {
+    "id": "5392042a-f731-4605-a989-419dba9aaf7d",
+    "title": "Microservicio Modular",
+    "description": "Microservicio que se despliega con perfiles simulando módulos dentro",
+    "authors": [
+      {
+        "name": "JP"
+      },
+      {
+        "name": "MM"
+      }
+    ]
+  }
+]

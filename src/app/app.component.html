@@ -1,0 +1,25 @@
+<div fxFlexFill fxLayout="column">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{ title }}</span>
+  </mat-toolbar>
+  <mat-drawer-container autosize fxFlex hasBackdrop="true">
+    <mat-drawer #drawer mode="over">
+      <mat-nav-list>
+        <a
+          *ngFor="let feature of feature$ | async"
+          mat-list-item
+          [routerLink]="feature.link"
+          (click)="drawer.toggle()"
+          ><mat-icon *ngIf="feature.icon">{{ feature.icon }}</mat-icon
+          ><span>{{ feature.name }}</span></a
+        >
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
