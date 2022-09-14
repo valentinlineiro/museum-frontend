@@ -11,11 +11,11 @@ import { FeatureService } from './core/service/feature.service';
 })
 export class AppComponent implements OnInit {
   title = environment.title;
-  feature$: Observable<Feature[]>;
+  features$: Observable<Feature[]>;
 
   constructor(private featureService: FeatureService) {}
 
   ngOnInit() {
-    this.feature$ = this.featureService.get();
+    this.features$ = this.featureService.get();
   }
 }

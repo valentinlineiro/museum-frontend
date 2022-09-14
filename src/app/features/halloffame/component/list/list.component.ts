@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Artist } from '../../../../shared/model/artist';
@@ -14,12 +14,12 @@ export class ListComponent implements OnInit {
   entries$: Observable<Entry[]>;
 
   constructor(
-    private halloffameService: HalloffameService,
+    @Inject('hallOfFameService') private halloffameService: HalloffameService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.entries$ = this.halloffameService.get();
+    this.entries$ = this.halloffameService.list();
   }
 
   authorsToLabel(authors: Artist[]): string {

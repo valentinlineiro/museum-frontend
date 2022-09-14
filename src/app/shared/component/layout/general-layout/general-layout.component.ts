@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./general-layout.component.css'],
 })
 export class GeneralLayoutComponent {
-  @Input() width: number = 70;
+  @Input() width: number = 70; // TODO: Ensure this is between 0 and 100
 }

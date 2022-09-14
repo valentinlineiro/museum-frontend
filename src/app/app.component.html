@@ -9,7 +9,7 @@
     <mat-drawer #drawer mode="over">
       <mat-nav-list>
         <a
-          *ngFor="let feature of feature$ | async"
+          *ngFor="let feature of features$ | async"
           mat-list-item
           [routerLink]="feature.link"
           (click)="drawer.toggle()"
