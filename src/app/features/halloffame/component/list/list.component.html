@@ -1,6 +1,6 @@
-<div fxLayout="column">
+<div fxFlexFill fxLayout="column">
   <app-list-toolbar (add)="onAdd()"></app-list-toolbar>
-  <app-general-layout [width]="90">
+  <app-general-layout fxFlex [width]="90">
     <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
       <div *ngIf="entries$ | async as entries; else loadingTemplate">
         <div *ngIf="entries?.length > 0; else emptyTemplate">

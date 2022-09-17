@@ -1,7 +1,9 @@
-<div fxFlex fxLayout="row">
-  <div [fxFlex]="(100 - width) / 2"></div>
-  <div [fxFlex]="width">
-    <ng-content></ng-content>
+<div fxFlexFill fxLayout="column">
+  <div fxFlex fxLayout="row">
+    <div [fxFlex]="(100 - width) / 2"></div>
+    <div [fxFlex]="width">
+      <ng-content></ng-content>
+    </div>
+    <div fxFlex></div>
   </div>
-  <div fxFlex></div>
 </div>
