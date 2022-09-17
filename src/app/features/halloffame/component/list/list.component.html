@@ -1,5 +1,4 @@
 <div fxFlexFill fxLayout="column">
-  <app-list-toolbar (add)="onAdd()"></app-list-toolbar>
   <app-general-layout fxFlex [width]="90">
     <div *ngIf="entries$ | async as entries; else loadingTemplate">
       <div *ngIf="entries?.length > 0; else emptyTemplate">
@@ -34,6 +33,7 @@
     </div>
   </app-general-layout>
 </div>
+<app-fab></app-fab>
 <ng-template #loadingTemplate>
   <div fxFlexFill fxLayoutAlign="center center">
     <mat-spinner></mat-spinner>
