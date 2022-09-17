@@ -3,14 +3,17 @@
     <button mat-icon-button (click)="onExit()">
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <span>{{ 'peste edit' }}</span>
+    <span *ngIf="isNew">New entry</span>
+    <span *ngIf="!isNew">Edit entry</span>
     <span fxFlex></span>
     <button mat-icon-button (click)="onSave()">
       <mat-icon>save_alt</mat-icon>
     </button>
   </mat-toolbar>
   <app-general-layout fxFlex [width]="90">
-    <div fxFlexFill *ngIf="entry$ | async as entry; else loadingTemplate"></div>
+    <div fxFlexFill *ngIf="entry$ | async as entry; else loadingTemplate">
+      {{ entry | json }}
+    </div>
   </app-general-layout>
 </div>
 <ng-template #loadingTemplate>

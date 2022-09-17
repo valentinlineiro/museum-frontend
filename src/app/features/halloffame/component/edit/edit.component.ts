@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { iif, map, Observable, of, switchMap, tap } from 'rxjs';
 import { Entry } from '../../model/entry';
+import { HalloffameService } from '../../service/halloffame.service';
 
 @Component({
   selector: 'app-edit',
@@ -9,12 +10,27 @@ import { Entry } from '../../model/entry';
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
+  isNew: boolean = true;
   entry$: Observable<Entry>;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    @Inject('hallOfFameService') private halloffameService: HalloffameService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.entry$ = this.route.params.pipe(map((params) => params.id));
+    this.entry$ = this.route.params.pipe(
+      map((params) => params.id),
+      tap((id) => (this.isNew = !!id)),
+      switchMap((id) =>
+        iif(
+          () => id,
+          this.halloffameService.getNew(),
+          this.halloffameService.getById(id)
+        )
+      )
+    );
   }
 
   onSave(): void {

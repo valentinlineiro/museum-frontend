@@ -14,6 +14,14 @@ export class HttpHalloffameService implements HalloffameService {
       .pipe(delay(1));
   }
 
+  getById(id: string): Observable<Entry> {
+    throw new Error('Method not implemented.');
+  }
+
+  getNew(): Observable<Entry> {
+    throw new Error('Method not implemented.');
+  }
+
   create(entry: Entry): Observable<Entry> {
     throw new Error('Method not implemented.');
   }

@@ -14,6 +14,14 @@ export class InMemoryHalloffameService implements HalloffameService {
     return of(this.entries).pipe(delay(250));
   }
 
+  getById(id: string): Observable<Entry> {
+    return of(this.entries.find((entry) => entry.id == id)).pipe(delay(250));
+  }
+
+  getNew(): Observable<Entry> {
+    return of({ title: '', description: '', authors: [] });
+  }
+
   create(entry: Entry): Observable<Entry> {
     const entryToSave: Entry = { id: v4(), ...entry };
     this.entries.push(entryToSave);
