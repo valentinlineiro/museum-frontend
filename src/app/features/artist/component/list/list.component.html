@@ -1,2 +1,9 @@
-<app-list-toolbar (add)="onAdd()"></app-list-toolbar>
-<app-general-layout [width]="90"> CONTENT </app-general-layout>
+<div fxFlexFill fxLayout="column">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="onMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Hall of Fame</span>
+  </mat-toolbar>
+  <app-general-layout fxFlex [width]="90"> CONTENT </app-general-layout>
+</div>
