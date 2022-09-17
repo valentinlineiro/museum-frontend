@@ -1,10 +1,4 @@
-<div fxFlexFill fxLayout="column">
-  <mat-toolbar color="primary">
-    <button mat-icon-button (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>{{ title }}</span>
-  </mat-toolbar>
+<div *ngIf="toggle$ | async" fxFlexFill fxLayout="column">
   <mat-drawer-container autosize fxFlex hasBackdrop="true">
     <mat-drawer #drawer mode="over">
       <mat-nav-list>

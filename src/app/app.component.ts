@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { Observable, tap } from 'rxjs';
 import { Feature } from './core/model/feature';
 import { FeatureService } from './core/service/feature.service';
+import { SidenavService } from './core/service/sidenav.service';
 
 @Component({
   selector: 'my-app',
@@ -10,12 +11,20 @@ import { FeatureService } from './core/service/feature.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = environment.title;
   features$: Observable<Feature[]>;
+  toggle$: Observable<boolean>;
 
-  constructor(private featureService: FeatureService) {}
+  @ViewChild('drawer') sidenav: MatSidenav;
+
+  constructor(
+    private featureService: FeatureService,
+    private sidenavService: SidenavService
+  ) {}
 
   ngOnInit() {
     this.features$ = this.featureService.get();
+    this.toggle$ = this.sidenavService
+      .getToggle$()
+      .pipe(tap((_) => this.sidenav?.toggle()));
   }
 }

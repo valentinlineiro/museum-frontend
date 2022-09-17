@@ -1,11 +1,13 @@
-<mat-toolbar>
-  <button mat-button (click)="onSave()">
-    <mat-icon>save_alt</mat-icon>
-    <span>Save</span>
-  </button>
-  <button mat-button (click)="onExit()">
-    <mat-icon>exit_to_app</mat-icon>
-    <span>Exit</span>
-  </button>
-</mat-toolbar>
-<app-general-layout [width]="90"></app-general-layout>
+<div fxFlexFill fxLayout="column">
+  <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="start center">
+    <button mat-icon-button (click)="onExit()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>{{ 'peste edit' }}</span>
+    <span fxFlex></span>
+    <button mat-icon-button (click)="onSave()">
+      <mat-icon>save_alt</mat-icon>
+    </button>
+  </mat-toolbar>
+  <app-general-layout fxFlex [width]="90"></app-general-layout>
+</div>

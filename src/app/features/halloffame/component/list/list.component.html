@@ -1,4 +1,10 @@
 <div fxFlexFill fxLayout="column">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="onMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Hall of Fame</span>
+  </mat-toolbar>
   <app-general-layout fxFlex [width]="90">
     <div fxFlexFill *ngIf="entries$ | async as entries; else loadingTemplate">
       <div *ngIf="entries?.length > 0; else emptyTemplate">
