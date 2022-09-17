@@ -13,4 +13,8 @@ export class HttpHalloffameService implements HalloffameService {
       .get<Entry[]>('/assets/mock/halloffame/halloffame.json')
       .pipe(delay(1));
   }
+
+  create(entry: Entry): Observable<Entry> {
+    throw new Error('Method not implemented.');
+  }
 }

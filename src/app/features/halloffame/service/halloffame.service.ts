@@ -3,4 +3,5 @@ import { Entry } from '../model/entry';
 
 export interface HalloffameService {
   list(): Observable<Entry[]>;
+  create(entry: Entry): Observable<Entry>;
 }
