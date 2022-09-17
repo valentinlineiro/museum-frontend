@@ -1,9 +1,9 @@
 <div fxFlexFill fxLayout="column">
   <app-list-toolbar (add)="onAdd()"></app-list-toolbar>
   <app-general-layout fxFlex [width]="90">
-    <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
-      <div *ngIf="entries$ | async as entries; else loadingTemplate">
-        <div *ngIf="entries?.length > 0; else emptyTemplate">
+    <div *ngIf="entries$ | async as entries; else loadingTemplate">
+      <div *ngIf="entries?.length > 0; else emptyTemplate">
+        <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
           <div
             fxFlex="25%"
             fxFlex.xs="100%"
@@ -35,6 +35,8 @@
   </app-general-layout>
 </div>
 <ng-template #loadingTemplate>
-  <mat-spinner></mat-spinner>
+  <div fxFlexFill fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </div>
 </ng-template>
 <ng-template #emptyTemplate>EMPTY</ng-template>

@@ -10,6 +10,6 @@ export class InMemoryHalloffameService implements HalloffameService {
   constructor() {}
 
   list(): Observable<Entry[]> {
-    return of(this.entries).pipe(delay(500000));
+    return of(this.entries).pipe(delay(5000));
   }
 }
