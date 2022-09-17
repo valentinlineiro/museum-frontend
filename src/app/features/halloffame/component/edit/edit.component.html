@@ -9,5 +9,12 @@
       <mat-icon>save_alt</mat-icon>
     </button>
   </mat-toolbar>
-  <app-general-layout fxFlex [width]="90"></app-general-layout>
+  <app-general-layout fxFlex [width]="90">
+    <div fxFlexFill *ngIf="entry$ | async as entry; else loadingTemplate"></div>
+  </app-general-layout>
 </div>
+<ng-template #loadingTemplate>
+  <div fxFlexFill fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

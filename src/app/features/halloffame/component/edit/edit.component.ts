@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map, Observable } from 'rxjs';
+import { Entry } from '../../model/entry';
 
 @Component({
   selector: 'app-edit',
@@ -7,9 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
-  constructor(private router: Router) {}
+  entry$: Observable<Entry>;
 
-  ngOnInit() {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.entry$ = this.route.params.pipe(map((params) => params.id));
+  }
 
   onSave(): void {
     // TODO: Implement
