@@ -28,15 +28,29 @@ export class LocalStorageHalloffameService implements HalloffameService {
     return of({ title: '', description: '', authors: [] });
   }
 
-  save(entry: Entry): Observable<Entry> {
+  create(entry: Entry): Observable<Entry> {
     const entryToSave: Entry = { id: v4(), ...entry };
     const entries: Entry[] = this.getEntries();
     entries.push(entryToSave);
-    localStorage.setItem('hof', JSON.stringify(entries));
+    this.saveEntries(entries);
     return of(entryToSave).pipe(delay(5000));
+  }
+
+  update(entry: Entry): Observable<Entry> {
+    const entries: Entry[] = this.getEntries();
+    const indexOfEntry = entries.findIndex(
+      (existingEntry) => existingEntry.id === entry.id
+    );
+    entries.splice(indexOfEntry, 1, entry);
+    this.saveEntries(entries);
+    return of(entry).pipe(delay(5000));
   }
 
   private getEntries(): Entry[] {
     return JSON.parse(localStorage.getItem('hof'));
+  }
+
+  private saveEntries(entries: Entry[]): void {
+    localStorage.setItem('hof', JSON.stringify(entries));
   }
 }

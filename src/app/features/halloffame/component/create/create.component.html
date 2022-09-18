@@ -1,1 +1,55 @@
-<p>PELAJE</p>
+<div fxFlexFill fxLayout="column">
+  <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="start center">
+    <button mat-icon-button (click)="onExit()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Create entry</span>
+    <span fxFlex></span>
+    <!-- TODO: Improve the color of the button when is disabled -->
+    <button
+      mat-icon-button
+      (click)="onSave()"
+      [disabled]="!entryForm.valid"
+      [ngClass]="{ 'not-allowed': !entryForm.valid }"
+    >
+      <mat-icon>save_alt</mat-icon>
+    </button>
+  </mat-toolbar>
+  <app-general-layout fxFlex [width]="90">
+    <div fxFlexFill *ngIf="entry$ | async as entry; else loadingTemplate">
+      <form [formGroup]="entryForm">
+        <div fxLayout="column" fxLayoutGap="16px">
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input
+              matInput
+              formControlName="title"
+              placeholder="Hall of fame entry title"
+            />
+            <mat-hint>Choose a title that summarizes the entry</mat-hint>
+            <mat-error>Title is required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              formControlName="description"
+              placeholder="Hall of fame entry description"
+              maxlength="250"
+              class="description"
+            ></textarea>
+            <mat-hint>
+              {{ 250 - entryForm.controls.description?.value?.length || 0 }}
+              characters remaining</mat-hint
+            >
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+  </app-general-layout>
+</div>
+<ng-template #loadingTemplate>
+  <div fxFlexFill fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

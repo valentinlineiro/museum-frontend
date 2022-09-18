@@ -25,7 +25,7 @@
                 <p>{{ entry.description }}</p>
               </mat-card-content>
               <mat-card-actions align="end">
-                <button mat-icon-button [routerLink]="[entry.id, 'edit']">
+                <button mat-icon-button [routerLink]="['edit', entry.id]">
                   <mat-icon>edit</mat-icon>
                 </button>
                 <button mat-icon-button (click)="onDelete(entry)">

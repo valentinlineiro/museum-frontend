@@ -11,7 +11,6 @@ import { HalloffameService } from '../../service/halloffame.service';
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
-  isNew: boolean = true;
   entryForm: FormGroup;
   entry$: Observable<Entry>;
   originalEntry: Entry;
@@ -31,19 +30,10 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     this.entry$ = this.route.params.pipe(
       map((params) => params.id),
-      tap((id) => (this.isNew = !!id)),
-      switchMap((id) =>
-        iif(
-          () => this.isNew,
-          this.halloffameService.getNew(),
-          this.halloffameService.getById(id)
-        )
-      ),
+      switchMap((id) => this.halloffameService.getById(id)),
       tap((entry) => {
         this.originalEntry = entry;
-        if (!this.isNew) {
-          this.entryForm.patchValue(entry);
-        }
+        this.entryForm.patchValue(entry);
       })
     );
   }
@@ -51,7 +41,7 @@ export class EditComponent implements OnInit {
   onSave(): void {
     this.entryForm.disable();
     this.halloffameService
-      .save({ ...this.originalEntry, ...this.entryForm.value })
+      .update({ ...this.originalEntry, ...this.entryForm.value })
       .pipe(tap((_) => this.onExit()))
       .subscribe();
   }

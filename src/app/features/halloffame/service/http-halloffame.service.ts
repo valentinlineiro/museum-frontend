@@ -22,7 +22,11 @@ export class HttpHalloffameService implements HalloffameService {
     throw new Error('Method not implemented.');
   }
 
-  save(entry: Entry): Observable<Entry> {
+  create(entry: Entry): Observable<Entry> {
+    throw new Error('Method not implemented.');
+  }
+
+  update(entry: Entry): Observable<Entry> {
     throw new Error('Method not implemented.');
   }
 }

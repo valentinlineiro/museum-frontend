@@ -5,5 +5,6 @@ export interface HalloffameService {
   list(): Observable<Entry[]>;
   getById(id: string): Observable<Entry>;
   getNew(): Observable<Entry>;
-  save(entry: Entry): Observable<Entry>;
+  create(entry: Entry): Observable<Entry>;
+  update(entry: Entry): Observable<Entry>;
 }

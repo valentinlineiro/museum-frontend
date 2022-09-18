@@ -1,0 +1,7 @@
+.description {
+  resize: none;
+}
+
+.not-allowed {
+  cursor: not-allowed;
+}
