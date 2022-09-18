@@ -14,6 +14,7 @@ export class EditComponent implements OnInit {
   isNew: boolean = true;
   entryForm: FormGroup;
   entry$: Observable<Entry>;
+  originalEntry: Entry;
 
   constructor(
     @Inject('hallOfFameService') private halloffameService: HalloffameService,
@@ -39,6 +40,7 @@ export class EditComponent implements OnInit {
         )
       ),
       tap((entry) => {
+        this.originalEntry = entry;
         if (!this.isNew) {
           this.entryForm.patchValue(entry);
         }
@@ -47,7 +49,8 @@ export class EditComponent implements OnInit {
   }
 
   onSave(): void {
-    // TODO: Implement
+    let entryToSave: Entry = { ...this.originalEntry, ...this.entryForm.value };
+    console.log(entryToSave);
   }
 
   onExit(): void {

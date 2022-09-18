@@ -7,7 +7,13 @@
     <span *ngIf="isNew">New entry</span>
     <span *ngIf="!isNew">Edit entry</span>
     <span fxFlex></span>
-    <button mat-icon-button (click)="onSave()">
+    <!-- TODO: Improve the color of the button when is disabled -->
+    <button
+      mat-icon-button
+      (click)="onSave()"
+      [disabled]="!entryForm.valid"
+      [ngClass]="{ 'not-allowed': !entryForm.valid }"
+    >
       <mat-icon>save_alt</mat-icon>
     </button>
   </mat-toolbar>
@@ -35,9 +41,7 @@
               class="description"
             ></textarea>
             <mat-hint>
-              {{
-                250 - entryForm.controls.description?.value?.length || 0
-              }}
+              {{ 250 - entryForm.controls.description?.value?.length || 0 }}
               characters remaining</mat-hint
             >
           </mat-form-field>
