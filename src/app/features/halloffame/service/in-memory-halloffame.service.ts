@@ -25,6 +25,6 @@ export class InMemoryHalloffameService implements HalloffameService {
   save(entry: Entry): Observable<Entry> {
     const entryToSave: Entry = { id: v4(), ...entry };
     this.entries.push(entryToSave);
-    return of(entryToSave).pipe(delay(500));
+    return of(entryToSave).pipe(delay(5000));
   }
 }

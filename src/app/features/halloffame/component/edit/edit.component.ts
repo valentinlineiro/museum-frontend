@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { iif, map, Observable, of, switchMap, tap } from 'rxjs';
-import { v4 } from 'uuid';
 import { Entry } from '../../model/entry';
 import { HalloffameService } from '../../service/halloffame.service';
 
@@ -50,6 +49,7 @@ export class EditComponent implements OnInit {
   }
 
   onSave(): void {
+    this.entryForm.disable();
     this.halloffameService
       .save({ ...this.originalEntry, ...this.entryForm.value })
       .pipe(tap((_) => this.onExit()))
