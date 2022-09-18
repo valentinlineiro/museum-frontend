@@ -6,7 +6,7 @@ import { ListComponent } from './component/list/list.component';
 import { EditComponent } from './component/edit/edit.component';
 import { environment } from '../../../environments/environment';
 import { HttpHalloffameService } from './service/http-halloffame.service';
-import { InMemoryHalloffameService } from './service/in-memory-halloffame.service';
+import { LocalStorageHalloffameService } from './service/local-storage-halloffame.service';
 
 const routes: Route[] = [
   {
@@ -32,7 +32,7 @@ const routes: Route[] = [
       provide: 'hallOfFameService',
       useClass: environment.production
         ? HttpHalloffameService
-        : InMemoryHalloffameService,
+        : LocalStorageHalloffameService,
     },
   ],
 })
