@@ -8,6 +8,13 @@
     <!-- TODO: Improve the color of the button when is disabled -->
     <button
       mat-icon-button
+      (click)="onDelete()"
+      [ngClass]="{ 'not-allowed': !entryForm.enabled }"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button
+      mat-icon-button
       (click)="onSave()"
       [disabled]="!entryForm.valid"
       [ngClass]="{ 'not-allowed': !entryForm.valid }"
