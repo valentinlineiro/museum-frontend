@@ -49,7 +49,6 @@ export class EditComponent implements OnInit {
   }
 
   onDelete(): void {
-    this.entryForm.disable();
     this.dialogService
       .confirm({
         title: 'Delete entry',
@@ -59,6 +58,7 @@ export class EditComponent implements OnInit {
       })
       .pipe(
         filter((confirmed) => !!confirmed),
+        tap((_) => this.entryForm.disable()),
         switchMap((_) => this.halloffameService.delete(this.originalEntry.id)),
         tap((_) => this.onExit())
       )
