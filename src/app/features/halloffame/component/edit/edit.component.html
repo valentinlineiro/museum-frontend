@@ -14,7 +14,7 @@
   <app-general-layout fxFlex [width]="90">
     <div fxFlexFill *ngIf="entry$ | async as entry; else loadingTemplate">
       <form [formGroup]="entryForm">
-        <div fxLayout="column">
+        <div fxLayout="column" fxLayoutGap="16px">
           <mat-form-field appearance="outline">
             <mat-label>Title</mat-label>
             <input
@@ -31,7 +31,15 @@
               matInput
               formControlName="description"
               placeholder="Hall of fame entry description"
+              maxlength="250"
+              class="description"
             ></textarea>
+            <mat-hint>
+              {{
+                250 - entryForm.controls.description?.value?.length || 0
+              }}
+              characters remaining</mat-hint
+            >
           </mat-form-field>
         </div>
       </form>

@@ -23,7 +23,7 @@ export class EditComponent implements OnInit {
   ) {
     this.entryForm = formBuilder.group({
       title: [null, Validators.required],
-      description: [null],
+      description: [null, Validators.maxLength],
     });
   }
 
