@@ -22,7 +22,7 @@ export class InMemoryHalloffameService implements HalloffameService {
     return of({ title: '', description: '', authors: [] });
   }
 
-  create(entry: Entry): Observable<Entry> {
+  save(entry: Entry): Observable<Entry> {
     const entryToSave: Entry = { id: v4(), ...entry };
     this.entries.push(entryToSave);
     return of(entryToSave).pipe(delay(500));
