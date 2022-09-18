@@ -7,6 +7,7 @@ import { EditComponent } from './component/edit/edit.component';
 import { environment } from '../../../environments/environment';
 import { HttpHalloffameService } from './service/http-halloffame.service';
 import { LocalStorageHalloffameService } from './service/local-storage-halloffame.service';
+import { CreateComponent } from './component/create/create.component';
 
 const routes: Route[] = [
   {
@@ -19,13 +20,13 @@ const routes: Route[] = [
   },
   {
     path: 'add',
-    component: EditComponent,
+    component: CreateComponent,
     pathMatch: 'full',
   },
 ];
 
 @NgModule({
-  declarations: [ListComponent, EditComponent],
+  declarations: [ListComponent, CreateComponent, EditComponent],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
   providers: [
     {

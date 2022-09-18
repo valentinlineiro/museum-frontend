@@ -34,7 +34,7 @@ export class EditComponent implements OnInit {
       tap((id) => (this.isNew = !!id)),
       switchMap((id) =>
         iif(
-          () => id,
+          () => this.isNew,
           this.halloffameService.getNew(),
           this.halloffameService.getById(id)
         )
