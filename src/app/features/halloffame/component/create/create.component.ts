@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { iif, map, Observable, switchMap, tap } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable, tap } from 'rxjs';
 import { Entry } from '../../model/entry';
 import { HalloffameService } from '../../service/halloffame.service';
 
@@ -18,7 +18,6 @@ export class CreateComponent implements OnInit {
   constructor(
     @Inject('hallOfFameService') private halloffameService: HalloffameService,
     private router: Router,
-    private route: ActivatedRoute,
     formBuilder: FormBuilder
   ) {
     this.entryForm = formBuilder.group({
