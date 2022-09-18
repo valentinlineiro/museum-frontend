@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { iif, map, Observable, of, switchMap, tap } from 'rxjs';
+import { filter, iif, map, Observable, of, switchMap, tap } from 'rxjs';
 import { DialogService } from '../../../../core/service/dialog.service';
 import { Entry } from '../../model/entry';
 import { HalloffameService } from '../../service/halloffame.service';
@@ -49,7 +49,20 @@ export class EditComponent implements OnInit {
   }
 
   onDelete(): void {
-    this.dialogService.confirm().subscribe();
+    this.entryForm.disable();
+    this.dialogService
+      .confirm({
+        title: 'Delete entry',
+        content: 'You are going to delete this entry. Are you sure?',
+        cancel: 'Cancel',
+        confirm: 'Yes',
+      })
+      .pipe(
+        filter((confirmed) => !!confirmed),
+        switchMap((_) => this.halloffameService.delete(this.originalEntry.id)),
+        tap((_) => this.onExit())
+      )
+      .subscribe();
   }
 
   onExit(): void {

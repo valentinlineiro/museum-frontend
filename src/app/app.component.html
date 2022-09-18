@@ -1,6 +1,7 @@
 <div *ngIf="toggle$ | async" fxFlexFill fxLayout="column">
   <mat-drawer-container autosize fxFlex hasBackdrop="true">
     <mat-drawer #drawer mode="over">
+      <!-- TODO: Add header with app name and version -->
       <mat-nav-list>
         <a
           *ngFor="let feature of features$ | async"

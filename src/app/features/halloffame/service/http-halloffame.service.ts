@@ -29,4 +29,8 @@ export class HttpHalloffameService implements HalloffameService {
   update(entry: Entry): Observable<Entry> {
     throw new Error('Method not implemented.');
   }
+
+  delete(id: string): Observable<any> {
+    throw new Error('Method not implemented.');
+  }
 }

@@ -7,4 +7,5 @@ export interface HalloffameService {
   getNew(): Observable<Entry>;
   create(entry: Entry): Observable<Entry>;
   update(entry: Entry): Observable<Entry>;
+  delete(id: string): Observable<any>;
 }
