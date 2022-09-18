@@ -3,6 +3,7 @@
     <button mat-icon-button (click)="onExit()">
       <mat-icon>arrow_back</mat-icon>
     </button>
+    <!-- TODO: Improve this part -->
     <span *ngIf="isNew">New entry</span>
     <span *ngIf="!isNew">Edit entry</span>
     <span fxFlex></span>
@@ -13,6 +14,7 @@
   <app-general-layout fxFlex [width]="90">
     <div fxFlexFill *ngIf="entry$ | async as entry; else loadingTemplate">
       {{ entry | json }}
+      <form [formGroup]="entryForm"></form>
     </div>
   </app-general-layout>
 </div>

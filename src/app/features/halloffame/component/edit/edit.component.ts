@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { iif, map, Observable, of, switchMap, tap } from 'rxjs';
 import { Entry } from '../../model/entry';
@@ -11,13 +12,19 @@ import { HalloffameService } from '../../service/halloffame.service';
 })
 export class EditComponent implements OnInit {
   isNew: boolean = true;
+  entryForm: FormGroup;
   entry$: Observable<Entry>;
 
   constructor(
     @Inject('hallOfFameService') private halloffameService: HalloffameService,
     private router: Router,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    formBuilder: FormBuilder
+  ) {
+    this.entryForm = formBuilder.group({
+      title: [null, Validators.required],
+    });
+  }
 
   ngOnInit() {
     this.entry$ = this.route.params.pipe(

@@ -41,7 +41,6 @@ const routes: Route[] = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     CoreModule,
