@@ -15,13 +15,12 @@ const routes: Route[] = [
     component: ListComponent,
   },
   {
-    path: ':id',
+    path: ':id/edit',
     component: EditComponent,
   },
   {
-    path: 'add',
+    path: 'create',
     component: CreateComponent,
-    pathMatch: 'full',
   },
 ];
 

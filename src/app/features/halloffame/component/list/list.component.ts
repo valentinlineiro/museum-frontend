@@ -16,8 +16,7 @@ export class ListComponent implements OnInit {
 
   constructor(
     @Inject('hallOfFameService') private halloffameService: HalloffameService,
-    private sidenavService: SidenavService,
-    private router: Router
+    private sidenavService: SidenavService
   ) {}
 
   ngOnInit() {
@@ -30,14 +29,6 @@ export class ListComponent implements OnInit {
 
   onMenu(): void {
     this.sidenavService.toggle();
-  }
-
-  onAdd(): void {
-    this.router.navigate(['halloffame', 'add']);
-  }
-
-  onEdit(entry: Entry): void {
-    this.router.navigate(['halloffame', entry.id]);
   }
 
   onDelete(entry: Entry): void {
