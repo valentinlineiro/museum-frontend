@@ -6,8 +6,6 @@ import { HalloffameService } from './halloffame.service';
 
 @Injectable()
 export class LocalStorageHalloffameService implements HalloffameService {
-  private entries: Entry[] = [];
-
   constructor() {
     if (!localStorage.getItem('hof')) {
       localStorage.setItem('hof', JSON.stringify([]));
