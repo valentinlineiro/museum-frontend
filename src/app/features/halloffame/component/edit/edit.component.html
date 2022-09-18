@@ -13,14 +13,25 @@
   </mat-toolbar>
   <app-general-layout fxFlex [width]="90">
     <div fxFlexFill *ngIf="entry$ | async as entry; else loadingTemplate">
-      {{ entry | json }}
       <form [formGroup]="entryForm">
         <div fxLayout="column">
-          <mat-form-field>
-            <mat-label>Legacy form field</mat-label>
-            <input matInput placeholder="Placeholder">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Hint</mat-hint>
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input
+              matInput
+              formControlName="title"
+              placeholder="Hall of fame entry title"
+            />
+            <mat-hint>Choose a title that summarizes the entry</mat-hint>
+            <mat-error>Title is required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              formControlName="description"
+              placeholder="Hall of fame entry description"
+            ></textarea>
           </mat-form-field>
         </div>
       </form>

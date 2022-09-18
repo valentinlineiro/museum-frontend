@@ -23,6 +23,7 @@ export class EditComponent implements OnInit {
   ) {
     this.entryForm = formBuilder.group({
       title: [null, Validators.required],
+      description: [null],
     });
   }
 
@@ -36,7 +37,12 @@ export class EditComponent implements OnInit {
           this.halloffameService.getNew(),
           this.halloffameService.getById(id)
         )
-      )
+      ),
+      tap((entry) => {
+        if (!this.isNew) {
+          this.entryForm.patchValue(entry);
+        }
+      })
     );
   }
 
