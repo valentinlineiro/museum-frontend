@@ -15,7 +15,10 @@
             fxFlex.sm="33%"
             *ngFor="let entry of entries"
           >
-            <mat-card class="mat-elevation-z4">
+            <mat-card
+              class="mat-elevation-z4 clickable"
+              [routerLink]="['edit', entry.id]"
+            >
               <mat-card-title>{{ entry.title }}</mat-card-title>
               <mat-card-subtitle>{{
                 authorsToLabel(entry.authors)
@@ -24,14 +27,14 @@
               <mat-card-content>
                 <p>{{ entry.description }}</p>
               </mat-card-content>
-              <mat-card-actions align="end">
+              <!--<mat-card-actions align="end">
                 <button mat-icon-button [routerLink]="['edit', entry.id]">
                   <mat-icon>edit</mat-icon>
                 </button>
                 <button mat-icon-button (click)="onDelete(entry)">
                   <mat-icon>delete</mat-icon>
                 </button>
-              </mat-card-actions>
+              </mat-card-actions> -->
             </mat-card>
           </div>
         </div>
