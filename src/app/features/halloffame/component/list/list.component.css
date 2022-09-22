@@ -9,3 +9,8 @@
 .clickable {
   cursor: pointer;
 }
+
+.container {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

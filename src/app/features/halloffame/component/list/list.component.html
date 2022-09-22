@@ -5,14 +5,15 @@
     </button>
     <span>Hall of Fame</span>
   </mat-toolbar>
-  <app-general-layout fxFlex [width]="90">
+  <app-general-layout class="container" fxFlex [width]="90">
     <div fxFlexFill *ngIf="entries$ | async as entries; else loadingTemplate">
       <div *ngIf="entries?.length > 0; else emptyTemplate">
         <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
           <div
             fxFlex="25%"
             fxFlex.xs="100%"
-            fxFlex.sm="33%"
+            fxFlex.sm="50%"
+            fxFlex.md="33%"
             *ngFor="let entry of entries"
           >
             <mat-card

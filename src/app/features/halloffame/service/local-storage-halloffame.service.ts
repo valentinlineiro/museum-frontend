@@ -31,7 +31,7 @@ export class LocalStorageHalloffameService implements HalloffameService {
     const entries: Entry[] = this.getEntries();
     entries.push(entryToSave);
     this.saveEntries(entries);
-    return of(entryToSave).pipe(delay(5000));
+    return of(entryToSave).pipe(delay(500));
   }
 
   update(entry: Entry): Observable<Entry> {
@@ -41,7 +41,7 @@ export class LocalStorageHalloffameService implements HalloffameService {
     );
     entries.splice(indexOfEntry, 1, entry);
     this.saveEntries(entries);
-    return of(entry).pipe(delay(5000));
+    return of(entry).pipe(delay(500));
   }
 
   delete(id: string): Observable<any> {
@@ -51,7 +51,7 @@ export class LocalStorageHalloffameService implements HalloffameService {
     );
     entries.splice(indexOfEntry, 1);
     this.saveEntries(entries);
-    return of(id).pipe(delay(5000));
+    return of(id).pipe(delay(500));
   }
 
   private getEntries(): Entry[] {
