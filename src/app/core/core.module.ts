@@ -5,11 +5,17 @@ import { SidenavService } from './service/sidenav.service';
 import { SharedModule } from '../shared/shared.module';
 import { DialogService } from './service/dialog.service';
 import { ConfirmComponent } from './component/confirm/confirm.component';
+import { LocalStorageService } from './service/local-storage.service';
 
 @NgModule({
   declarations: [ConfirmComponent],
   imports: [CommonModule, SharedModule],
-  providers: [FeatureService, SidenavService, DialogService],
+  providers: [
+    FeatureService,
+    SidenavService,
+    DialogService,
+    LocalStorageService,
+  ],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule?: CoreModule) {
